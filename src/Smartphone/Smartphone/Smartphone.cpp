@@ -15,17 +15,17 @@ int main()
 {
 	try {
 		setlocale(LC_ALL, "Russian");
+		int num;
+		cout << "Введите количество элементов в массиве: ";
+		cin >> num;
+		if (num == 0)
+			throw 1; 
 		string FileName;
 		ifstream File;
 		cout << "Введите адрес файла: ";
 		cin >> FileName;
 		File.open(FileName);
 		if (!File.is_open())
-			throw 1;
-		int num;
-		cout << "Введите количество элементов в массиве: ";
-		cin >> num;
-		if (num == 0)
 			throw 2;
 		cout << endl;
 		Smartphone* Smartphones = new Smartphone[num];
@@ -44,9 +44,9 @@ int main()
 		return 0;
 	}
 	catch (int c) {
-		if (c == 1)
-			cout << "Ошибка! Файл не открыт!" << endl;
 		if (c == 2)
+			cout << "Ошибка! Файл не открыт!" << endl;
+		if (c == 1)
 			cout << "Размер массива введен некорректно!" << endl;
 		if (c == 3)
 			cout << "Модель смартфона введена некорректно!" << endl;
