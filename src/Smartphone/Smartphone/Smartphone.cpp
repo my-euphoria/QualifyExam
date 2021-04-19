@@ -1,15 +1,16 @@
 ﻿#include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
 class Smartphone {
 public:
 	string model;
-    double price;
+    double price[10];
 	string diagonal;
 
-	void Qsort(Smartphone **smphone, int n) {
+	/*void Qsort(Smartphone *smphone, int n) {
 		Smartphone* temp;
 		for (int i = 0; i < n - 1; i++) {
 			for (int j = 0; j < n - i - 1; j++) {
@@ -20,34 +21,77 @@ public:
 				}
 			}
 		}
-	}
-
-};
+	}*/
+//
+//	void SaveInFile(Smartphone* smphone, string FileName, int n)
+//	{
+//		ofstream File;
+//		File.open(FileName);
+//		for (int i = 0; i < n; i++)
+//		{
+//			File << smphone[i].model << "\n";
+//			File << smphone[i].price << "\n";
+//			File << smphone[i].diagonal << "\n";
+//		}
+//		File.close();
+//	}
+//
+//	void SetInfo(Smartphone* smphone, int n) {
+//		for (int i = 0; i < n; i++) {
+//			cout << "Модель автомобиля: ";
+//			cin >> smphone[i].model;
+//			cout << "Цена автомобиля: ";
+//			cin >> smphone[i].price;
+//			cout << "Размер диагонали экрана смартфона: ";
+//			cin >> smphone[i].diagonal;
+//			cout << endl;
+//		}
+//	}
+//
+//
+//};
+//
+//void SetInfo(Smartphone* smphone, int n);
+//void SaveInFile(Smartphone* smphone, string FileName, int n);
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
-	Smartphone **Smartphones;
-	int num;
-	cout << "Введите количество элементов в массиве: ";
-	cin >> num;
-	cout << endl;
-	Smartphones = new Smartphone * [num];
-	for (int i = 0; i < num; i++) {
-		Smartphones[i] = new Smartphone;
-		cout << "Модель смартфона: ";
-		cin >> Smartphones[i]->model;
-		cout << "Цена смартфона: ";
-		cin >> Smartphones[i]->price;
-		cout << "Размер диагонали экрана смартфона: ";
-		cin >> Smartphones[i]->diagonal;
+	try {
+		setlocale(LC_ALL, "Russian");
+		string FileName;
+		cout << "Введите адрес файла: ";
+		cin >> FileName;
+		int num;
+		cout << "Введите количество элементов в массиве: ";
+		cin >> num;
+		if (num == 0)
+			throw 1;
 		cout << endl;
-	};
-	cout << "До сортировки: " << endl << endl;
-	for (int i = 0; i < num; i++) {
-		cout << "Модель смартфона: " << Smartphones[i]->model << "\nЦена смартфона: " << Smartphones[i]->price << " руб." << "\nРазмер диагонали экрана смартфона: " << Smartphones[i]->diagonal << " дюймов" << "\n\n";
-	}
+		Smartphone* Smartphones = new Smartphone[num];
+		SetInfo(Smartphones, num);
+		SaveInFile(Smartphones, FileName, num);
+		/*for (int i = 0; i < num; i++) {
+			Smartphones[i] = new Smartphone;
+			cout << "Модель смартфона: ";
+			cin >> Smartphones[i]->model;
+			cout << "Цена смартфона: ";
+			cin >> Smartphones[i]->price;
+			cout << "Размер диагонали экрана смартфона: ";
+			cin >> Smartphones[i]->diagonal;
+			cout << endl;
+		};*/
+		/*cout << "До сортировки: " << endl << endl;
+		for (int i = 0; i < num; i++) {
+			cout << "Модель смартфона: " << Smartphones[i]->model << "\nЦена смартфона: " << Smartphones[i]->price << " руб." << "\nРазмер диагонали экрана смартфона: " << Smartphones[i]->diagonal << " дюймов" << "\n\n";
+		}*/
 
-	system("pause");
-	return 0;
+		delete[] Smartphones;
+		system("pause");
+		return 0;
+	}
+	catch (int c) {
+		if (c == 1)
+			cout << "Размер массива некорректен!" << endl;
+	}
+	
 }

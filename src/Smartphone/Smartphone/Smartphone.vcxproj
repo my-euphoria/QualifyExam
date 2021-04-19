@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClCompile Include="Smartphone.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Smartphone.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
