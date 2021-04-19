@@ -7,7 +7,7 @@ using namespace std;
 
 struct Smartphone {
 	string model;
-	double price[10];
+	double price;
 	string diagonal;
 };
 

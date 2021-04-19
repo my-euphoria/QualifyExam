@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SetInfo.cpp" />
     <ClCompile Include="Smartphone.cpp" />
   </ItemGroup>
   <ItemGroup>
