@@ -19,11 +19,11 @@ void SaveInFile(Smartphone* smphone, string FileName, int n)
 
 void SetInfo(Smartphone* smphone, int n) {
 	for (int i = 0; i < n; i++) {
-		cout << "Модель автомобиля: ";
+		cout << "Модель смартфона: ";
 		cin >> smphone[i].model;
 		if (smphone[i].model.empty())
 			throw 3;
-		cout << "Цена автомобиля: ";
+		cout << "Цена смартфона: ";
 		cin >> smphone[i].price;
 		if (smphone[i].price < 0)
 			throw 4;
