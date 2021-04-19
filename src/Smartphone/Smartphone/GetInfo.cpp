@@ -9,6 +9,8 @@ Smartphone* Load(string FileName, int n)
 	Smartphone* Smartphones = new Smartphone[n];
 	ifstream File;
 	File.open(FileName);
+	if (!File.is_open())
+		throw 1;
 	for (int i = 0; i < n; i++)
 	{
 		File >> Smartphones[i].model;
@@ -36,7 +38,7 @@ void GetInfo(Smartphone* smphone, int n) {
 	for (int i = 0; i < n; i++) {
 		cout << "Модель смартфона: " << smphone[i].model << endl;
 		cout << "Цена смартфона: " << smphone[i].price << " руб." << endl;
-		cout << "размер диагонали экрана смартфона: " << smphone[i].diagonal << endl;
+		cout << "Размер диагонали экрана смартфона: " << smphone[i].diagonal << endl;
 		cout << endl;
 	}
 }

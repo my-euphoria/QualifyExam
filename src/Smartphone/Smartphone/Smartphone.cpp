@@ -16,13 +16,17 @@ int main()
 	try {
 		setlocale(LC_ALL, "Russian");
 		string FileName;
+		ifstream File;
 		cout << "Введите адрес файла: ";
 		cin >> FileName;
+		File.open(FileName);
+		if (!File.is_open())
+			throw 1;
 		int num;
 		cout << "Введите количество элементов в массиве: ";
 		cin >> num;
 		if (num == 0)
-			throw 1;
+			throw 2;
 		cout << endl;
 		Smartphone* Smartphones = new Smartphone[num];
 		SetInfo(Smartphones, num);
@@ -32,7 +36,7 @@ int main()
 		Smartphones = Load(FileName, num);
 		Sort(Smartphones, num);
 		SaveInFile(Smartphones, FileName, num);
-		system("cls");
+		//system("cls");
 		cout << "После сортировки: " << endl;
 		GetInfo(Smartphones, num);
 		delete[] Smartphones;
@@ -41,7 +45,15 @@ int main()
 	}
 	catch (int c) {
 		if (c == 1)
-			cout << "Размер массива некорректен!" << endl;
+			cout << "Ошибка! Файл не открыт!" << endl;
+		if (c == 2)
+			cout << "Размер массива введен некорректно!" << endl;
+		if (c == 3)
+			cout << "Модель смартфона введена некорректно!" << endl;
+		if (c == 4)
+			cout << "Цена смартфона введена некорректно!" << endl;
+		if (c == 5)
+			cout << "Размер диагонали экрана смартфона введен некорректно!" << endl;
 	}
 	
 }
